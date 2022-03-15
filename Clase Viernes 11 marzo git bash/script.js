@@ -10,5 +10,10 @@ ls: me saca una lista de todas las carpetas
 y si quiero volver a la carpeta donde estabas antes: cd y pongo la primer letra del nombre de la carpeta
 
 A: 
+
+
+
+
+65498721
 */
 
