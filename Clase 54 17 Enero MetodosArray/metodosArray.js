@@ -1,43 +1,44 @@
-// // // map()
+// // map()
 
-// // //tengo el array:
-// // const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+// //tengo el array:
+// const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-// // //cuando quiero a todo el array aplicarle lo mismo
-// // // no solo recorre un array, sino que 
-// // // devuelve otro array donde los elementos son los del array inicial al que se les hizo "algo"
+// //cuando quiero a todo el array aplicarle lo mismo
+// // no solo recorre un array, sino que 
+// // devuelve otro array donde los elementos son los del array inicial al que se les hizo "algo"
 
-// // //por ejemplo si quiero a todo este array multiplicarlo POR DOS
+// //por ejemplo si quiero a todo este array multiplicarlo POR DOS
 
-// // const resultadoMultiplacacionNumerosX2 = numeros.map((num) => {
-// //     return num * 2
-// // })
-// // console.log(resultadoMultiplacacionNumerosX2);
+// const resultadoMultiplacacionNumerosX2 = numeros.map((num) => {
+//     return num * 2
+// })
+// console.log(resultadoMultiplacacionNumerosX2);
 
-// // // una forma de hacer esto mismo pero mas resumido:
-// // const resultadoMultiplacacionNumerosX2RESUMIDO = numeros.map(num => num * 2);
-// // console.log(resultadoMultiplacacionNumerosX2);
+// // una forma de hacer esto mismo pero mas resumido:
+// const resultadoMultiplacacionNumerosX2RESUMIDO = numeros.map(num => num * 2);
+// console.log(resultadoMultiplacacionNumerosX2);
 
-// // //otro ejemplo pero sumandole 5 al array PREO CREANDO un nuevO array  "plus"
+// //otro ejemplo pero sumandole 5 al array PREO CREANDO un nuevO array  "plus"
 
-// // // tenemos nuestro array y el array vacio
-// // const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-// // const plus = [];
+// // tenemos nuestro array y el array vacio
+// const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const plus = [];
 
-// // // ******************* podemos hacerlo asi:
-// // // const resultadoMasCinco = arr.map((num) =>{
-// // //     return num+5
-// // // })
-// // // console.log(resultadoMasCinco);
-// // // plus.push(resultadoMasCinco);
-// // // console.log(plus)
 
-// // //******************** o podemos hacerlo asi
-// // // const plus = arr.map( (num)=>{
-// // //     return num +5
-// // // }
-// // // )
-// // // console.log(plus);
+// ******************* podemos hacerlo asi:
+// const resultadoMasCinco = arr.map((num) =>{
+//     return num+5
+// })
+// console.log(resultadoMasCinco);
+// plus.push(resultadoMasCinco);
+// console.log(plus)
+
+//******************** o podemos hacerlo asi
+// const plus = arr.map( (num)=>{
+//     return num +5
+// }
+// )
+// console.log(plus);
 
 // // /************************/
 
