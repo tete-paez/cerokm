@@ -1100,315 +1100,492 @@ const empleades = [{
     },
 ];
 
+
+
+// EJERCICIO 1
+
 // empleadesQueHacenGuardia, que devuelva un array con todes les empleades que hacen guardia
 
-const empleadesQueHacenGuardia = () => empleades.filter(({
-    haceGuardia
-}) => haceGuardia)
-//console.log(empleadesQueHacenGuardia())
+// RESUELTO POR MI
+const empleadesQueHacenGuardia1 = () =>  empleades.filter(empleades => empleades.haceGuardia === true)
+console.log(empleadesQueHacenGuardia1())
+
+//RESUELTO X PROFE
+const empleadesQueHacenGuardia = () => empleades.filter(({haceGuardia}) => haceGuardia)
+console.log(empleadesQueHacenGuardia())
+
+// ---------------------------------------------------------------------------
+// EJERCICIO 2
 
 // empleadesPorPais, que tome por parámetro el nombre de un país y devuelva un array con todes les empleades que son de dicho país
+// RESUELTO POR MI
+const empleadesPorPais1 = (pais) =>  empleades.filter(empleades => empleades.pais === pais)
+console.log(empleadesPorPais1("Venezuela"))
 
-const empleadesPorPais = (nombrePais) => empleades.filter(({
-    pais
-}) => pais === nombrePais)
-//console.log(empleadesPorPais("Venezuela"))
+//RESUELTO X PROFE
+const empleadesPorPais = (nombrePais) => empleades.filter(({pais}) => pais === nombrePais)
+console.log(empleadesPorPais("Venezuela"))
 
-// empleadesPorArea, que tome por parámetro el nombre de un área y devuelva un array con todes les empleades que son de dicho área
+// ---------------------------------------------------------------------------
+// EJERCICIO 3
 
+// // RESUELTO POR MI
+// // empleadesPorArea, que tome por parámetro el nombre de un área y devuelva un array con todes les empleades que son de dicho área
+
+const empleadesPorArea1 = (nomberArea) => empleades.filter( empleades => empleades.area === nomberArea)
+console.log(empleadesPorArea1("QA"))
+
+//RESUELTO X PROFE
 const empleadesPorArea = (nombreArea) => empleades.filter(({
     area
 }) => area === nombreArea)
-//console.log(empleadesPorArea("QA"))
+console.log(empleadesPorArea("QA"))
 
+// ---------------------------------------------------------------------------
+// EJERCICIO 4
+
+//  RESUELTO POR MI
 // empleadesConSueldoMayorA, que tome por parámetro un número como sueldo y devuelva un array con todes les empleades que tengan un sueldo mayor a dicho número, ordenados de menor a mayor según sueldo
 
+const empleadesConSueldoMayorA1 = (number) => empleades.filter(empleades => empleades.sueldo > number)
+console.log(empleadesConSueldoMayorA1(70000))
+
+
+
+//RESUELTO X PROFE
 const empleadesConSueldoMayorA = (numeroSueldo) => {
     const mejoresSueldos = empleades.filter(({
         sueldo
     }) => sueldo > numeroSueldo)
     return mejoresSueldos.sort((a, b) => a.sueldo - b.sueldo)
 }
-//console.log(empleadesConSueldoMayorA(70000))
+console.log(empleadesConSueldoMayorA(70000))
 
+
+// ---------------------------------------------------------------------------
+// EJERCICIO 5
+
+//  RESUELTO POR MI
 // empleadesConMasLenguajes, que tome por parámetro un número y devuelva un array con aquelles empleades que sepan más lenguajes que dicho número
 
-const empleadesConMasLenguajes = (numero) => empleades.filter(({
-    lenguajes
-}) => lenguajes.length > numero)
-//console.log(empleadesConMasLenguajes(4))
+const empleadesConMasLenguajes1 = (numero) => empleades.filter(({lenguajes}) => lenguajes.length > numero)
+console.log(empleadesConMasLenguajes1(4))
 
+
+// //RESUELTO X PROFE
+const empleadesConMasLenguajes = (numero) => empleades.filter(({lenguajes}) => lenguajes.length > numero)
+console.log(empleadesConMasLenguajes(4))
+
+
+// ---------------------------------------------------------------------------
+// EJERCICIO 6
+
+//  RESUELTO POR MI
 // sueldoPromedioEmpleades, que devuelva el sueldo promedio de todos los empleados
 
+const sueldoPromedioEmpleades1 = (array) => {
+    let sumaTodosLosSueldos = 0
+    for (const {sueldo} of array) {
+        sumaTodosLosSueldos += sueldo
+    }
+    console.log(sumaTodosLosSueldos)
+    return sumaTodosLosSueldos/array.length
+}
+console.log(sueldoPromedioEmpleades1(empleades))
+
+
+// //RESUELTO X PROFE
 const sueldoPromedioEmpleades = (array) => {
     let suma = 0
-    for (const {
-            sueldo
-        } of array) {
+    for (const {sueldo} of array) {
         suma += sueldo
     }
     return suma / array.length
 }
-//console.log(sueldoPromedioEmpleades(empleades))
+console.log(sueldoPromedioEmpleades(empleades))
 
-// sueldoPromedioPorSeniority, que tome por parámetro un seniority, y devuelva el sueldo promedio de todes les empleades que tengan ese seniority
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 7
+
+
+// // sueldoPromedioPorSeniority, que tome por parámetro un seniority, y devuelva el sueldo promedio de todes les empleades que tengan ese seniority
+
+//  RESUELTO POR MI
+// entro a los seniorities y chequeo que sea el mismo del parametro
+// luego sumo todos los sueldos de esos 
+// luego lo divido x la cantidad
+
+const sueldoPromedioPorSeniority1 = (unSeniority) => {
+    const empleadeesXseniorities = empleades.filter(({seniority}) => seniority === unSeniority)
+    //console.log(empleadeesXseniorities)
+    //return empleadeesXseniorities
+    return sueldoPromedioEmpleades(empleadeesXseniorities)
+}
+console.log("Senior: ",sueldoPromedioPorSeniority1("Senior"))
+console.log("Trainee: ",sueldoPromedioPorSeniority1("Trainee"))
+console.log("Junior: ",sueldoPromedioPorSeniority1("Junior"))
+console.log("Semisenior: ",sueldoPromedioPorSeniority1("Semisenior"))
+
+
+// //RESUELTO X PROFE
 
 const sueldoPromedioPorSeniority = (nombreSeniority) => {
-    const empleadesPorSeniority = empleades.filter(({
-        seniority
-    }) => seniority === nombreSeniority)
+    const empleadesPorSeniority = empleades.filter(({seniority}) => seniority === nombreSeniority)
     return sueldoPromedioEmpleades(empleadesPorSeniority)
 }
-// console.log("Senior: ",sueldoPromedioPorSeniority("Senior"))
-// console.log("Trainee: ",sueldoPromedioPorSeniority("Trainee"))
-// console.log("Junior: ",sueldoPromedioPorSeniority("Junior"))
-// console.log("Semisenior: ",sueldoPromedioPorSeniority("Semisenior"))
+console.log("Senior: ",sueldoPromedioPorSeniority("Senior"))
+console.log("Trainee: ",sueldoPromedioPorSeniority("Trainee"))
+console.log("Junior: ",sueldoPromedioPorSeniority("Junior"))
+console.log("Semisenior: ",sueldoPromedioPorSeniority("Semisenior"))
 
-// buscarEmpleades, que tome por parámetros area, puesto y seniority, y devuelva un array con les empleades que pertenezcan a dicha area, puesto y seniority
 
-const buscarEmpleades = (nombreArea, nombrePuesto, nombreSeniority) => empleades.filter(({
-    area,
-    puesto,
-    seniority
-}) => nombreArea === area && nombrePuesto === puesto && nombreSeniority === seniority)
-//console.log(buscarEmpleades("QA","Backend Developer","Senior"))
 
-// errorEnProduccion, que ponga en true la propiedad haceGuardia de todos los empleados
 
-const errorEnProduccion = () => empleades.map(empleade => {
-    return {
-        ...empleade,
-        haceGuardia: true
-    }
-})
-//console.log(errorEnProduccion())
+//---------------------------------------------------------------------------
+// EJERCICIO 8
 
-// subirDeCategoria, que tome como parámetro un objeto empleade. Si diche empleade no tiene un seniority "Senior", cambiar el valor de su propiedad seniority con el siguiente que le corresponde en orden ("Trainee" -> "Junior" -> "Semisenior" -> "Senior"), y le incremente en 10000 el sueldo
+//  RESUELTO POR MI
 
-const aumentarSueldo = (empleade, numero) => {
-    empleade.sueldo = empleade.sueldo + numero
-    return empleade
-}
+// // buscarEmpleades, que tome por parámetros area, puesto y seniority, y devuelva un array con les empleades que pertenezcan a dicha area, puesto y seniority
 
-const subirDeCategoria = (empleade) => {
-    switch (empleade.seniority) {
-        case "Trainee":
-            empleade.seniority = "Junior"
-            aumentarSueldo(empleade, 10000)
-            break
-        case "Junior":
-            empleade.seniority = "Semisenior"
-            aumentarSueldo(empleade, 10000)
-            break
-        case "Semisenior":
-            empleade.seniority = "Senior"
-            aumentarSueldo(empleade, 10000)
-            break
-        case "Senior":
-            empleade
-            break
-    }
-    return empleade
-}
-// console.log(subirDeCategoria(empleades[0]))
-// console.log(subirDeCategoria(empleades[1]))
-// console.log(subirDeCategoria(empleades[3]))
-// console.log(subirDeCategoria(empleades[99]))
+const buscarEmpleades = (area, puesto , seniority) => empleades.filter(empleade)
 
-// agregarTecnologias, que agregue a todos los objetos empleades la propiedad tecnologías,que es un array conteniendo los valores "GIT" y "Node.js"
 
-const agregarTecnologias = () => empleades.map(empleade => {
-    if (!empleade.lenguajes.includes(["GIT", "Node.js"])) {
-        empleade.lenguajes.push("GIT")
-        empleade.lenguajes.push("Node.js")
-        return empleade
-    } else {
-        return empleade
-    }
-})
-//console.log(agregarTecnologias())
 
-// empleadeSabeLenguaje, que tome por parámetro un objeto empleade (elemento del array empleades) y un lenguaje y devuelva true si dicho empleade sabe dicho lenguaje
 
-const empleadeSabeLenguaje = (empleade, nombreLenguaje) => empleade.lenguajes.includes(nombreLenguaje)
-// console.log(empleadeSabeLenguaje(empleades[0], "Java"))
-// console.log(empleadeSabeLenguaje(empleades[0], "Ruby"))
 
-// empleadesQueSabenLenguaje, que tome por parámetro un lenguaje y devuelva todes les empleades que saben dicho lenguaje (usar la función anterior)
 
-const empleadesQueSabenLenguaje = (nombreLenguaje) => empleades.filter(empleade => empleadeSabeLenguaje(empleade, nombreLenguaje))
-//console.log(empleadesQueSabenLenguaje("Java"))
 
-// empleadesQueSabenLenguajes, que tome por parámetro un array de lenguajes y devuelva un array con aquelles empleades que sepan todos esos lenguajes
 
-const empleadesQueSabenLenguajes = (arrayLenguajes) => empleades.filter(({
-    lenguajes
-}) => {
-    let inicial = 0
-    for (const lenguaje of arrayLenguajes) {
-        if (lenguajes.includes(lenguaje)) {
-            inicial++
-        }
-    }
-    if (inicial === arrayLenguajes.length && lenguajes.length === inicial) {
-        return true
-    }
-})
-//console.log(empleadesQueSabenLenguajes(["Ruby", "JavaScript", "PHP", "Python", "Java"]))
+// const buscarEmpleades = (nombreArea, nombrePuesto, nombreSeniority) => empleades.filter(({
+//     area,
+//     puesto,
+//     seniority
+// }) => nombreArea === area && nombrePuesto === puesto && nombreSeniority === seniority)
+// //console.log(buscarEmpleades("QA","Backend Developer","Senior"))
 
-// empleadesQueSabenAlgunosLenguajes, que tome por parámetro un array de lenguajes y devuelva un array con aquelles empleades que sepan al menos uno de esos lenguajes
 
-const empleadesQueSabenAlgunosLenguajes = (arrayLenguajes) => empleades.filter(({
-    lenguajes
-}) => lenguajes.some(lenguaje => arrayLenguajes.includes(lenguaje)))
-//console.log(empleadesQueSabenAlgunosLenguajes(["Java", "Ruby"]))
 
-// empleadesConMejorSueldo, que devuelva un array con los 10 mejores empleades pagos (investigar metodo sort)
 
-const empleadesConMejorSueldo = () => {
-    const mejoresSueldos = empleades.sort((a, b) => a.sueldo - b.sueldo)
-    return mejoresSueldos.slice(90)
-}
-//console.log(empleadesConMejorSueldo())
 
-// obtenerTitulosCompletos, que devuelva un array donde cada elemento es un string con la forma "nombre, puesto seniority, area", p.ej.: "Nadia Conrad, Senior Backend Developer, Desarrollo", habiendo un elemento por cada empleade (usar map)
+//---------------------------------------------------------------------------
+// EJERCICIO 9
 
-const obtenerTitulosCompletos = () => empleades.map(({
-    seniority,
-    area,
-    puesto,
-    nombre
-}) => `${nombre}, ${seniority} ${puesto}, ${area}`)
-//console.log(obtenerTitulosCompletos())
+// // errorEnProduccion, que ponga en true la propiedad haceGuardia de todos los empleados
 
-/*
-obtenerInfoPersonal, que devuelva un array donde cada elemento es un objeto con las propiedades
-    nombre
-    pais
-    edad habiendo un elemento por cada empleade, y donde cada propiedad se corresponde a la propiedad del objeto original (usar map)
-*/
+// const errorEnProduccion = () => empleades.map(empleade => {
+//     return {
+//         ...empleade,
+//         haceGuardia: true
+//     }
+// })
+// //console.log(errorEnProduccion())
 
-const obtenerInfoPersonal = () => empleades.map(({
-    nombre,
-    pais,
-    edad
-}) => {
-    return {
-        nombre: nombre,
-        pais: pais,
-        edad: edad
-    }
-})
-//console.log(obtenerInfoPersonal())
 
-/*
-obtenerInfoPuestos, que devuelva un array donde cada elemento es un objeto con las propiedades
-    nombre
-    area
-    puesto
-    seniority habiendo un elemento por cada empleade, y donde cada propiedad se corresponde a la propiedad del objeto original (usar map)
-*/
 
-const obtenerInfoPuestos = () => empleades.map(({
-    nombre,
-    area,
-    puesto,
-    seniority
-}) => {
-    return {
-        nombre: nombre,
-        area: area,
-        puesto: puesto,
-        seniority: seniority
-    }
-})
-//console.log(obtenerInfoPuestos())
 
-/*
-obtenerInfoSeniority, que devuelva un array donde cada elemento es un objeto con las propiedades
-    nombre
-    seniority
-    sueldo
-    cantidadLenguajes habiendo un elemento por cada empleade, y donde cada propiedad se corresponde a la propiedad del objeto original, eecepto cantidadLenguajes, que es un número indicando la cantidad de lenguajes que sabe (usar map)
-*/
+//---------------------------------------------------------------------------
+// EJERCICIO 10
 
-const obtenerInfoSeniority = () => empleades.map(({
-    nombre,
-    seniority,
-    sueldo,
-    lenguajes
-}) => {
-    return {
-        nombre: nombre,
-        seniority: seniority,
-        sueldo: sueldo,
-        cantidadLenguajes: lenguajes.length
-    }
-})
-//console.log(obtenerInfoSeniority())
+// // subirDeCategoria, que tome como parámetro un objeto empleade. Si diche empleade no tiene un seniority "Senior", cambiar el valor de su propiedad seniority con el siguiente que le corresponde en orden ("Trainee" -> "Junior" -> "Semisenior" -> "Senior"), y le incremente en 10000 el sueldo
 
-/*
-obtenerInfoPagos, que devuelva una array donde cada elemento es un objeto con las propiedades
-    nombre
-    sueldoBruto
-    obraSocial
-    jubilacion
-    sueldoNeto habiendo un elemento por cada empleade, donde
-    sueldoBruto es el sueldo del objeto original
-    obraSocial es el 3% del sueldoBruto
-    jubilacion es el 11% del sueldoBruto
-    sueldoNeto es el resultado de restarle a sueldoBruto los valores de obraSocial y jubilacion
-*/
+// const aumentarSueldo = (empleade, numero) => {
+//     empleade.sueldo = empleade.sueldo + numero
+//     return empleade
+// }
 
-const calcularPorcentaje = (sueldo, porcentaje) => sueldo * (porcentaje / 100)
+// const subirDeCategoria = (empleade) => {
+//     switch (empleade.seniority) {
+//         case "Trainee":
+//             empleade.seniority = "Junior"
+//             aumentarSueldo(empleade, 10000)
+//             break
+//         case "Junior":
+//             empleade.seniority = "Semisenior"
+//             aumentarSueldo(empleade, 10000)
+//             break
+//         case "Semisenior":
+//             empleade.seniority = "Senior"
+//             aumentarSueldo(empleade, 10000)
+//             break
+//         case "Senior":
+//             empleade
+//             break
+//     }
+//     return empleade
+// }
+// // console.log(subirDeCategoria(empleades[0]))
+// // console.log(subirDeCategoria(empleades[1]))
+// // console.log(subirDeCategoria(empleades[3]))
+// // console.log(subirDeCategoria(empleades[99]))
 
-const obtenerInfoPagos = () => empleades.map(({
-    nombre,
-    sueldo
-}) => {
-    const jubilacion = calcularPorcentaje(sueldo, 11)
-    const obraSocial = calcularPorcentaje(sueldo, 3)
-    return {
-        nombre: nombre,
-        sueldoBruto: sueldo,
-        obraSocial: obraSocial,
-        jubilacion: jubilacion,
-        sueldoNeto: sueldo - obraSocial - jubilacion
-    }
-})
-//console.log(obtenerInfoPagos())
 
-// obtenerEstadisticasSeniority que devuelva un objeto donde cada propiedad es un seniority y el valor la cantidad de empleades con dicho seniority
 
-const obtenerEstadisticasSeniority = () => {
-    let seniorities = []
-    for (const {
-            seniority
-        } of empleades) {
-        !seniorities.includes(seniority) && seniorities.push(seniority)
-    }
-    let newObj = {}
-    for (const seniority of seniorities) {
-        newObj[seniority] = empleades.filter(empleade => empleade.seniority === seniority).length
-    }
-    return newObj
-}
-console.log(obtenerEstadisticasSeniority())
 
-// obtenerEstadisticasLenguajes que devuelva un objeto donde cada propiedad es un lenguaje y el valor la cantidad de empleades que saben dicho lenguaje
+//---------------------------------------------------------------------------
+// EJERCICIO 11
 
-const obtenerEstadisticasLenguajes = () => {
-    let losLenguajes = []
-    for (const {
-            lenguajes
-        } of empleades) {
-        for (const lenguaje of lenguajes)
-            !losLenguajes.includes(lenguaje) && losLenguajes.push(lenguaje)
-    }
-    let newObj = {}
-    for (const lenguaje of losLenguajes) {
-        newObj[lenguaje] = empleades.filter(empleade => empleadeSabeLenguaje(empleade, lenguaje)).length
-    }
-    return newObj
-}
-//console.log(obtenerEstadisticasLenguajes())
+// // agregarTecnologias, que agregue a todos los objetos empleades la propiedad tecnologías,que es un array conteniendo los valores "GIT" y "Node.js"
+
+// const agregarTecnologias = () => empleades.map(empleade => {
+//     if (!empleade.lenguajes.includes(["GIT", "Node.js"])) {
+//         empleade.lenguajes.push("GIT")
+//         empleade.lenguajes.push("Node.js")
+//         return empleade
+//     } else {
+//         return empleade
+//     }
+// })
+// //console.log(agregarTecnologias())
+
+
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 12
+
+
+// // empleadeSabeLenguaje, que tome por parámetro un objeto empleade (elemento del array empleades) y un lenguaje y devuelva true si dicho empleade sabe dicho lenguaje
+
+// const empleadeSabeLenguaje = (empleade, nombreLenguaje) => empleade.lenguajes.includes(nombreLenguaje)
+// // console.log(empleadeSabeLenguaje(empleades[0], "Java"))
+// // console.log(empleadeSabeLenguaje(empleades[0], "Ruby"))
+
+
+
+
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 13
+
+
+// // empleadesQueSabenLenguaje, que tome por parámetro un lenguaje y devuelva todes les empleades que saben dicho lenguaje (usar la función anterior)
+
+// const empleadesQueSabenLenguaje = (nombreLenguaje) => empleades.filter(empleade => empleadeSabeLenguaje(empleade, nombreLenguaje))
+// //console.log(empleadesQueSabenLenguaje("Java"))
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 14
+
+
+// // empleadesQueSabenLenguajes, que tome por parámetro un array de lenguajes y devuelva un array con aquelles empleades que sepan todos esos lenguajes
+
+// const empleadesQueSabenLenguajes = (arrayLenguajes) => empleades.filter(({
+//     lenguajes
+// }) => {
+//     let inicial = 0
+//     for (const lenguaje of arrayLenguajes) {
+//         if (lenguajes.includes(lenguaje)) {
+//             inicial++
+//         }
+//     }
+//     if (inicial === arrayLenguajes.length && lenguajes.length === inicial) {
+//         return true
+//     }
+// })
+// //console.log(empleadesQueSabenLenguajes(["Ruby", "JavaScript", "PHP", "Python", "Java"]))
+
+
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 15
+
+
+// // empleadesQueSabenAlgunosLenguajes, que tome por parámetro un array de lenguajes y devuelva un array con aquelles empleades que sepan al menos uno de esos lenguajes
+
+// const empleadesQueSabenAlgunosLenguajes = (arrayLenguajes) => empleades.filter(({
+//     lenguajes
+// }) => lenguajes.some(lenguaje => arrayLenguajes.includes(lenguaje)))
+// //console.log(empleadesQueSabenAlgunosLenguajes(["Java", "Ruby"]))
+
+
+
+
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 16
+
+
+// // empleadesConMejorSueldo, que devuelva un array con los 10 mejores empleades pagos (investigar metodo sort)
+
+// const empleadesConMejorSueldo = () => {
+//     const mejoresSueldos = empleades.sort((a, b) => a.sueldo - b.sueldo)
+//     return mejoresSueldos.slice(90)
+// }
+// //console.log(empleadesConMejorSueldo())
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 17
+
+
+// // obtenerTitulosCompletos, que devuelva un array donde cada elemento es un string con la forma "nombre, puesto seniority, area", p.ej.: "Nadia Conrad, Senior Backend Developer, Desarrollo", habiendo un elemento por cada empleade (usar map)
+
+// const obtenerTitulosCompletos = () => empleades.map(({
+//     seniority,
+//     area,
+//     puesto,
+//     nombre
+// }) => `${nombre}, ${seniority} ${puesto}, ${area}`)
+// //console.log(obtenerTitulosCompletos())
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------
+// EJERCICIO 18
+
+
+// /*
+// obtenerInfoPersonal, que devuelva un array donde cada elemento es un objeto con las propiedades
+//     nombre
+//     pais
+//     edad habiendo un elemento por cada empleade, y donde cada propiedad se corresponde a la propiedad del objeto original (usar map)
+// */
+
+// const obtenerInfoPersonal = () => empleades.map(({
+//     nombre,
+//     pais,
+//     edad
+// }) => {
+//     return {
+//         nombre: nombre,
+//         pais: pais,
+//         edad: edad
+//     }
+// })
+// //console.log(obtenerInfoPersonal())
+
+// /*
+// obtenerInfoPuestos, que devuelva un array donde cada elemento es un objeto con las propiedades
+//     nombre
+//     area
+//     puesto
+//     seniority habiendo un elemento por cada empleade, y donde cada propiedad se corresponde a la propiedad del objeto original (usar map)
+// */
+
+// const obtenerInfoPuestos = () => empleades.map(({
+//     nombre,
+//     area,
+//     puesto,
+//     seniority
+// }) => {
+//     return {
+//         nombre: nombre,
+//         area: area,
+//         puesto: puesto,
+//         seniority: seniority
+//     }
+// })
+// //console.log(obtenerInfoPuestos())
+
+// /*
+// obtenerInfoSeniority, que devuelva un array donde cada elemento es un objeto con las propiedades
+//     nombre
+//     seniority
+//     sueldo
+//     cantidadLenguajes habiendo un elemento por cada empleade, y donde cada propiedad se corresponde a la propiedad del objeto original, eecepto cantidadLenguajes, que es un número indicando la cantidad de lenguajes que sabe (usar map)
+// */
+
+// const obtenerInfoSeniority = () => empleades.map(({
+//     nombre,
+//     seniority,
+//     sueldo,
+//     lenguajes
+// }) => {
+//     return {
+//         nombre: nombre,
+//         seniority: seniority,
+//         sueldo: sueldo,
+//         cantidadLenguajes: lenguajes.length
+//     }
+// })
+// //console.log(obtenerInfoSeniority())
+
+// /*
+// obtenerInfoPagos, que devuelva una array donde cada elemento es un objeto con las propiedades
+//     nombre
+//     sueldoBruto
+//     obraSocial
+//     jubilacion
+//     sueldoNeto habiendo un elemento por cada empleade, donde
+//     sueldoBruto es el sueldo del objeto original
+//     obraSocial es el 3% del sueldoBruto
+//     jubilacion es el 11% del sueldoBruto
+//     sueldoNeto es el resultado de restarle a sueldoBruto los valores de obraSocial y jubilacion
+// */
+
+// const calcularPorcentaje = (sueldo, porcentaje) => sueldo * (porcentaje / 100)
+
+// const obtenerInfoPagos = () => empleades.map(({
+//     nombre,
+//     sueldo
+// }) => {
+//     const jubilacion = calcularPorcentaje(sueldo, 11)
+//     const obraSocial = calcularPorcentaje(sueldo, 3)
+//     return {
+//         nombre: nombre,
+//         sueldoBruto: sueldo,
+//         obraSocial: obraSocial,
+//         jubilacion: jubilacion,
+//         sueldoNeto: sueldo - obraSocial - jubilacion
+//     }
+// })
+// //console.log(obtenerInfoPagos())
+
+// // obtenerEstadisticasSeniority que devuelva un objeto donde cada propiedad es un seniority y el valor la cantidad de empleades con dicho seniority
+
+// const obtenerEstadisticasSeniority = () => {
+//     let seniorities = []
+//     for (const {
+//             seniority
+//         } of empleades) {
+//         !seniorities.includes(seniority) && seniorities.push(seniority)
+//     }
+//     let newObj = {}
+//     for (const seniority of seniorities) {
+//         newObj[seniority] = empleades.filter(empleade => empleade.seniority === seniority).length
+//     }
+//     return newObj
+// }
+// console.log(obtenerEstadisticasSeniority())
+
+// // obtenerEstadisticasLenguajes que devuelva un objeto donde cada propiedad es un lenguaje y el valor la cantidad de empleades que saben dicho lenguaje
+
+// const obtenerEstadisticasLenguajes = () => {
+//     let losLenguajes = []
+//     for (const {
+//             lenguajes
+//         } of empleades) {
+//         for (const lenguaje of lenguajes)
+//             !losLenguajes.includes(lenguaje) && losLenguajes.push(lenguaje)
+//     }
+//     let newObj = {}
+//     for (const lenguaje of losLenguajes) {
+//         newObj[lenguaje] = empleades.filter(empleade => empleadeSabeLenguaje(empleade, lenguaje)).length
+//     }
+//     return newObj
+// }
+// //console.log(obtenerEstadisticasLenguajes())

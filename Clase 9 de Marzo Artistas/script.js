@@ -37,28 +37,29 @@
     piano: 20
 } */
 
-// // nustro objetivo es crear un objeto y que sus propiedades sean los instrumentos, y luego darle a esas propiedades el valor de la cant de artistas que tocan ese instrumento
-// const cantidadDeArtistasPorInstrumento = (artistas) => {
-//                                 // Declaro array vacio para guardar los instrumentos
-//     let instrumentos = []
-//                                 // Itero sobre artistas y pregunto si ya incluye ese instrumento, si no lo incluye, lo pusheo
-//                                 // si si lo incluye, entonces sigo de largo en el bucle
-//     for (let prop in artistas) {
-//         !instrumentos.includes(artistas[prop].instrumento) && instrumentos.push(artistas[prop].instrumento)
-//     }
-//                                 // en este punto ya creamos las propiedades dinamicas instrumentos, ahora necesito contar cuantos antistas tocan esos instrumentos
-//                                 // Declaro objeto vacio para retornarlo luego
-//     let artistaPorInstrumento = {}
-//                                 // Itero sobre mi array de instrumentos y genero una propiedad por cada uno, en donde guardo
-//                                 // la cantidad de artistas que tocan ese instrumento.
-//                                 // Recordemos que filter retorna un nuevo array, por eso puedo usar .length
-//     for (let instrumento of instrumentos) {
-//         artistaPorInstrumento[instrumento] = artistas.filter(artista => artista.instrumento === instrumento).length
-//     } 
-//     return artistaPorInstrumento    
-// }
+// nustro objetivo es crear un objeto y que sus propiedades sean los instrumentos, y luego darle a esas propiedades el valor de la cant de artistas que tocan ese instrumento
+const cantidadDeArtistasPorInstrumento = (artistas) => {
+                                // Declaro array vacio para guardar los instrumentos
+    let instrumentos = []
+                                // Itero sobre artistas y pregunto si ya incluye ese instrumento, si no lo incluye, lo pusheo
+                                // si si lo incluye, entonces sigo de largo en el bucle
+                                //console.log(instrumentos)
+    for (let prop in artistas) {
+        !instrumentos.includes(artistas[prop].instrumento) && instrumentos.push(artistas[prop].instrumento)
+    }
+                                // en este punto ya creamos las propiedades dinamicas instrumentos, ahora necesito contar cuantos antistas tocan esos instrumentos
+                                // Declaro objeto vacio para retornarlo luego
+    let artistaPorInstrumento = {}
+                                // Itero sobre mi array de instrumentos y genero una propiedad por cada uno, en donde guardo
+                                // la cantidad de artistas que tocan ese instrumento.
+                                // Recordemos que filter retorna un nuevo array, por eso puedo usar .length
+    for (let instrumento of instrumentos) {
+        artistaPorInstrumento[instrumento] = artistas.filter(artista => artista.instrumento === instrumento).length
+    } 
+    return artistaPorInstrumento    
+}
 
-// console.log(cantidadDeArtistasPorInstrumento(artistas))
+console.log(cantidadDeArtistasPorInstrumento(artistas))
 
 
 // //RESPUESTA DE MATIAS:
@@ -274,3 +275,42 @@ EN EL FOR IN ME DEVUEVE INDICES  DE LOS ELEMENTOS QUE ESTOY RECORRIENDO
 
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+const vendedoraDelMes1 = (mes, anio) => {
+    let vendedoraCapa = ""
+    let totalVentasVendedoraCapa = 0
+    // destructuro las prpiedades que necesito
+    const {ventas, vendedoras} = local
+    //filtro la propiedad ventas: y chekeo que la propiedad fecha de cada venta cpincida o no con las que paso x parametro
+    const ventasFiltradoPorFecha = ventas.filter(elemento => elemento.fecha.getMonth() + 1 === mes && elemento.fecha.getFullYear() === anio)
+    // creo el objeto vendedoras que es donde voy a poner cuanto vendio cada una(aca guardo el resultado de la fx precioMaquina)
+    const vendedorasObj = {}
+    //recorro el array vendedoras
+    for (const vendedora of vendedoras) {
+        // creo el contador para guardar las ventas acumuladas de cada una
+        let contadorVentas = 0
+        //
+        for ( const venta of ventasFiltradoPorFecha) {
+            if (vendedora === venta.nombreVendedora) {
+                contadorVentas += precioMaquina(venta.componentes)// aca uso la fx precioMaquina y guardo en el contador el monto de la venta
+            }
+        }
+        if (totalVentasVendedoraCapa < contadorVentas) {
+            totalVentasVendedoraCapa = contadorVentas
+            vendedoraCapa = vendedora
+        }
+    }return vendedoraCapa
+    }
+
+console.log(vendedoraDelMes1(1, 2019))
